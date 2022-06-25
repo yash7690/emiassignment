@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * Adobe_EmiAssignment
+ *
+ * @category  XML
+ * @package   Adobe_EmiAssignment
+ * @author    Adobe <support@adobe.com>
+ * @copyright 2022 Copyright (c) Adobe
+ * @link      https://www.adobe.com/
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="adobe_emiassignment" translate="label" sortOrder="300">
+            <label>Adobe</label>
+        </tab>
+        <section id="adobe_emiassignment" translate="label" type="text" showInDefault="1" sortOrder="45">
+            <class>separator-top</class>
+            <label>EMI Assignment</label>
+            <tab>adobe_emiassignment</tab>
+            <resource>Adobe_EmiAssignment::config_emiassignment</resource>
+            <group id="general" translate="label" type="text" showInDefault="1" sortOrder="10">
+                <label>General Settings</label>
+                <field id="emi_options" translate="label" showInDefault="1" sortOrder="10">
+                    <label>EMI Options</label>
+                    <frontend_model>Adobe\EmiAssignment\Block\Adminhtml\System\Form\Field\DynamicRowsEmiOptions</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

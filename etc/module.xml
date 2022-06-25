@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * Adobe_EmiAssignment
+ *
+ * @category  XML
+ * @package   Adobe_EmiAssignment
+ * @author    Adobe <support@adobe.com>
+ * @copyright 2022 Copyright (c) Adobe
+ * @link      https://www.adobe.com/
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Adobe_EmiAssignment">
+        <sequence>
+            <module name="Magento_Backend"/>
+            <module name="Magento_Catalog"/>
+        </sequence>
+    </module>
+</config>

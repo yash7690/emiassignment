@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * Adobe_EmiAssignment
+ *
+ * @category  XML
+ * @package   Adobe_EmiAssignment
+ * @author    Adobe <support@adobe.com>
+ * @copyright 2022 Copyright (c) Adobe
+ * @link      https://www.adobe.com/
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\CustomerData\Customer">
+        <plugin name="adobe_append_customer_gender_in_section" type="Adobe\EmiAssignment\Plugin\Magento\Customer\CustomerData\Customer"/>
+    </type>
+</config>

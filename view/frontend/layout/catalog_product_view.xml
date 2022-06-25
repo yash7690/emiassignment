@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * Adobe_EmiAssignment
+ *
+ * @category  XML
+ * @package   Adobe_EmiAssignment
+ * @author    Adobe <support@adobe.com>
+ * @copyright 2022 Copyright (c) Adobe
+ * @link      https://www.adobe.com/
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.main">
+            <block class="Adobe\EmiAssignment\Block\Catalog\Product\View\Emi" name="adobe.emi.content" template="Adobe_EmiAssignment::catalog/product/view/emi.phtml" after="product.info.price"/>
+        </referenceBlock>
+    </body>
+</page>

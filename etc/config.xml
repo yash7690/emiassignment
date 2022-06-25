@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * Adobe_EmiAssignment
+ *
+ * @category  XML
+ * @package   Adobe_EmiAssignment
+ * @author    Adobe <support@adobe.com>
+ * @copyright 2022 Copyright (c) Adobe
+ * @link      https://www.adobe.com/
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <adobe_emiassignment>
+            <general>
+                <emi_options>
+                    <item1>
+                        <interest_rate>16</interest_rate>
+                        <tenure_month>3</tenure_month>
+                        <gender>1</gender>
+                    </item1>
+                    <item2>
+                        <interest_rate>12</interest_rate>
+                        <tenure_month>6</tenure_month>
+                        <gender>1</gender>
+                    </item2>
+                    <item3>
+                        <interest_rate>10</interest_rate>
+                        <tenure_month>6</tenure_month>
+                        <gender>2</gender>
+                    </item3>
+                    <item4>
+                        <interest_rate>10</interest_rate>
+                        <tenure_month>12</tenure_month>
+                        <gender>1</gender>
+                    </item4>
+                </emi_options>
+            </general>
+        </adobe_emiassignment>
+    </default>
+</config>
