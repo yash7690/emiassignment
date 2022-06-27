@@ -88,4 +88,22 @@ class Emi extends Template
             'initialPrice' => $initialPrice
         ]);
     }
+
+    /**
+     * Supports only simple and configurable products
+     *
+     * @return bool
+     */
+    public function isProductTypeSupported()
+    {
+        $productType = $this->productViewBlock->getProduct()->getTypeId();
+        if (in_array($productType, [
+            'simple',
+            'configurable'
+        ])) {
+            return true;
+        }
+
+        return false;
+    }
 }

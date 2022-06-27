@@ -10,7 +10,6 @@ define([
     'use strict';
 
     return Component.extend({
-        priceFormat: null,
         minEmi: ko.observable(0),
         finalPrice : ko.observable(0),
         storeConfigEmiOptions: [],

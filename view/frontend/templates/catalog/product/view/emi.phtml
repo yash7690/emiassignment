@@ -3,40 +3,45 @@
 /** @var $escaper \Magento\Framework\Escaper */
 ?>
 
-<div class="adobe-emi-section" data-bind="scope: 'section'">
-    <!-- ko if: customer().gender -->
-        <input id="adobe_emi_final_price_textbox" type="hidden" data-bind="value: finalPrice"/>
+<?php if ($block->isProductTypeSupported()): ?>
 
-        <div class="adobe-emi-dropdown-wrap minicart-wrapper" style="margin: 0; float: none;">
-            <?= /* @noEscape */ __('EMI starts at %1 per month.', '<b><span data-bind="text: minEmi"></span></b>') ?>
+    <div class="adobe-emi-section" data-bind="scope: 'section'">
+        <!-- ko if: customer().gender -->
+            <input id="adobe_emi_final_price_textbox" type="hidden" data-bind="value: finalPrice"/>
 
-            <a href="javascript:void(0)" class="adobe-emi-dropdown-button">
-                <?= $escaper->escapeHtml(__('EMI Options'))?>
-            </a>
+            <div class="adobe-emi-dropdown-wrap minicart-wrapper" style="margin: 0; float: none;">
+                <?= /* @noEscape */ __(
+                    'EMI starts at %1 per month.',
+                    '<b><span data-bind="text: minEmi"></span></b>'
+                ) ?>
 
-            <div id="adobe_emi_dropdown_content_wrapper" class="block block-minicart" style="display: none">
-                <table border="2">
-                    <thead>
-                        <tr>
-                            <th><?= $escaper->escapeHtml(__('EMI Plan'))?></th>
-                            <th><?= $escaper->escapeHtml(__('Interest(pa)'))?></th>
-                            <th><?= $escaper->escapeHtml(__('Total Cost'))?></th>
-                        </tr>
-                    </thead>
-                    <tbody data-bind="foreach: emiOptions">
-                        <tr>
-                            <td data-bind="text: plan"></td>
-                            <td data-bind="text: interest"></td>
-                            <td data-bind="text: total"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <a href="javascript:void(0)" class="adobe-emi-dropdown-button">
+                    <?= $escaper->escapeHtml(__('EMI Options'))?>
+                </a>
+
+                <div id="adobe_emi_dropdown_content_wrapper" class="block block-minicart" style="display: none">
+                    <table border="2">
+                        <thead>
+                            <tr>
+                                <th><?= $escaper->escapeHtml(__('EMI Plan'))?></th>
+                                <th><?= $escaper->escapeHtml(__('Interest(pa)'))?></th>
+                                <th><?= $escaper->escapeHtml(__('Total Cost'))?></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: emiOptions">
+                            <tr>
+                                <td data-bind="text: plan"></td>
+                                <td data-bind="text: interest"></td>
+                                <td data-bind="text: total"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    <!-- /ko -->
-</div>
+        <!-- /ko -->
+    </div>
 
-<script type="text/x-magento-init">
+    <script type="text/x-magento-init">
     {
         "*": {
             "Magento_Ui/js/core/app": {
@@ -50,3 +55,4 @@
         }
     }
 </script>
+<?php endif; ?>`

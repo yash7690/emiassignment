@@ -33,7 +33,10 @@ define([
             },
 
             recalculateEmiOptions: function(aeFinalPrice) {
-                $('#adobe_emi_final_price_textbox').val(aeFinalPrice.final).trigger('change');
+                let elementId = "adobe_emi_final_price_textbox";
+                if ($('#' + elementId).length > 0) {
+                    $('#' + elementId).val(aeFinalPrice.final).trigger('change');
+                }
             }
         });
 
