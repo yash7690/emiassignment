@@ -97,13 +97,9 @@ class Emi extends Template
     public function isProductTypeSupported()
     {
         $productType = $this->productViewBlock->getProduct()->getTypeId();
-        if (in_array($productType, [
+        return in_array($productType, [
             'simple',
             'configurable'
-        ])) {
-            return true;
-        }
-
-        return false;
+        ]);
     }
 }
