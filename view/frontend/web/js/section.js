@@ -10,6 +10,7 @@ define([
     'use strict';
 
     return Component.extend({
+        priceFormat: false,
         minEmi: ko.observable(0),
         finalPrice : ko.observable(0),
         storeConfigEmiOptions: [],
@@ -20,7 +21,7 @@ define([
 
             this._super();
             this.customer = customerData.get('customer');
-
+            this.priceFormat = config.priceFormat;
             this.storeConfigEmiOptions = config.storeConfigEmiOptions;
             this.finalPrice.subscribe(function(basePrice) {
                 if (self.storeConfigEmiOptions) {
@@ -47,14 +48,14 @@ define([
                                 // formula we are using is below
                                 // EMI = P × r × (1 + r)n/((1 + r)n - 1)
                                 let emi = basePrice * r * (((1 + r) ** tenure_month) / (((1 + r) ** tenure_month) - 1));
-                                let emiFormatted = utils.formatPrice(emi.toFixed(2));
+                                let emiFormatted = utils.formatPrice(emi.toFixed(2), self.priceFormat);
                                 emis.push(emi);
 
                                 let totalAmount = emi * tenure_month;
-                                let totalAmountFormatted = utils.formatPrice(totalAmount.toFixed(2));
+                                let totalAmountFormatted = utils.formatPrice(totalAmount.toFixed(2), self.priceFormat);
 
                                 let totalInterestPayable = parseFloat(totalAmount - basePrice);
-                                let totalInterestPayableFormatted = utils.formatPrice(totalInterestPayable.toFixed(2));
+                                let totalInterestPayableFormatted = utils.formatPrice(totalInterestPayable.toFixed(2), self.priceFormat);
                                 lines.push({
                                     plan: $.mage.__("%1 X %2 m").replace('%1', emiFormatted).replace('%2', tenure_month),
                                     interest: $.mage.__("%1 (%2%)").replace('%1', totalInterestPayableFormatted).replace('%2', interest_rate),
@@ -66,7 +67,7 @@ define([
                         if (lines) {
                             self.emiOptions(lines);
                             let minEmi = Math.min.apply(null, emis);
-                            self.minEmi(utils.formatPrice(minEmi.toFixed(2)));
+                            self.minEmi(utils.formatPrice(minEmi.toFixed(2), self.priceFormat));
                         }
                     }
                 }

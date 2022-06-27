@@ -17,6 +17,7 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Catalog\Block\Product\View as ProductViewBlock;
+use Magento\Framework\Locale\FormatInterface;
 
 class Emi extends Template
 {
@@ -41,11 +42,17 @@ class Emi extends Template
     private $productViewBlock;
 
     /**
+     * @var FormatInterface
+     */
+    private $localeFormat;
+
+    /**
      * @param Template\Context $context
      * @param Json $json
      * @param SerializerInterface $serializer
      * @param ScopeConfigInterface $scopeConfig
      * @param ProductViewBlock $productViewBlock
+     * @param FormatInterface $localeFormat
      * @param array $data
      */
     public function __construct(
@@ -54,6 +61,7 @@ class Emi extends Template
         SerializerInterface $serializer,
         ScopeConfigInterface $scopeConfig,
         ProductViewBlock $productViewBlock,
+        FormatInterface $localeFormat,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -61,6 +69,7 @@ class Emi extends Template
         $this->serializer = $serializer;
         $this->scopeConfig = $scopeConfig;
         $this->productViewBlock = $productViewBlock;
+        $this->localeFormat = $localeFormat;
     }
 
     /**
@@ -85,7 +94,8 @@ class Emi extends Template
 
         return $this->serializer->serialize([
             'storeConfigEmiOptions' => $emiOptions,
-            'initialPrice' => $initialPrice
+            'initialPrice' => $initialPrice,
+            'priceFormat' => $this->localeFormat->getPriceFormat()
         ]);
     }
 
